@@ -17,13 +17,15 @@ export default function Post({ post }) {
         </div>
       </header>
       <div className="post-body">
-        <Image
-          className="post-thumb"
-          src={`https:${thumbnail.fields.file.url}`}
-          width={thumbnail.fields.file.details.image.width}
-          height={thumbnail.fields.file.details.image.height}
-          alt=''
-        />
+        { thumbnail &&
+          <Image
+            className="post-thumb"
+            src={`https:${thumbnail.fields.file.url}`}
+            width={thumbnail.fields.file.details.image.width}
+            height={thumbnail.fields.file.details.image.height}
+            alt=''
+          />
+        }
         <div className="post-content">{documentToReactComponents(content)}</div>
       </div>
       <footer className="post-meta">

@@ -17,6 +17,8 @@ export default function Layout ({ children }) {
         </div>
       </header>
 
+      <div className="page-banner"></div>
+
       <div className="page-content">
         { children }
       </div>
@@ -36,6 +38,14 @@ export default function Layout ({ children }) {
       .page-header {
         display: flex;
         justify-content: space-between;
+      }
+
+      .page-banner {
+        background-image: url('./banner.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 250px;
+        margin: 0 0 20px 0;
       }
 
       .page-content {
