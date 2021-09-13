@@ -1,8 +1,7 @@
-import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { createClient } from 'contentful'
-import Post from './component/Post'
+import Post from './components/Post'
+import Sidebar from './components/Sidebar'
 
 export async function getStaticProps () {
   const client = createClient({
@@ -15,23 +14,52 @@ export async function getStaticProps () {
   return {
     props: {
       posts: response.items
-    }
+    },
+    revalidate: 1
   }
 
 }
 
 export default function Posts({ posts }) {
-  console.log('posts', posts);
   return (
-    <div className="post-list">
-      {posts.map(post => (
-        <Post key={post.sys.id} post={post} />
-      ))}
+    <div className="blog-page-wrapper">
+      <div className="primary">
+        <div className="post-list">
+          {posts.map(post => (
+            <Post key={post.sys.id} post={post} />
+          ))}
+        </div>
+      </div>
+      <div className="secondary">
+        <Sidebar items={posts} />
+      </div>
 
       <style jsx>{`
-      .post-list {
-        margin: 0 0 0 322px !important;
-      }
+        .blog-page-wrapper {
+          border-radius: 3px;
+          margin: 0 auto;
+          position: relative;
+          width: 870px;
+        }
+
+        .primary {
+          float: right;
+          margin: 0 0 0 -282px;
+          width: 100%;
+        }
+
+        .post-list {
+          margin: 0 0 0 282px !important;
+        }
+
+        .secondary {
+          float: left;
+          padding: 71px 30px 30px;
+          width: 222px;
+          background-color: #030930;
+          height: 100%;
+        }
+
       `}</style>
     </div>
   )

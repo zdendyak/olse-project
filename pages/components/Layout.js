@@ -21,6 +21,8 @@ export default function Layout ({ children }) {
         { children }
       </div>
 
+      <hr />
+
       <footer>
         <p>Copyright 2021</p>
       </footer>
@@ -36,8 +38,14 @@ export default function Layout ({ children }) {
         justify-content: space-between;
       }
 
+      .page-content {
+        display: flex;
+        min-height: calc(100vh - 145px);
+      }
+
       .page-links {
         display: flex;
+        color: #030930;
       }
 
       .page-links a {
