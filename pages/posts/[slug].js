@@ -1,7 +1,7 @@
 import { createClient } from 'contentful'
-import Fallback from '../components/Fallback'
-import Post from '../components/Post'
-import Sidebar from '../components/Sidebar'
+import Fallback from '../../components/Fallback'
+import Post from '../../components/Post'
+import Sidebar from '../../components/Sidebar'
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID,

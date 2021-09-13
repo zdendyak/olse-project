@@ -1,7 +1,7 @@
 import styles from '../styles/Home.module.css'
 import { createClient } from 'contentful'
-import Post from './components/Post'
-import Sidebar from './components/Sidebar'
+import Post from '../components/Post'
+import Sidebar from '../components/Sidebar'
 
 export async function getStaticProps () {
   const client = createClient({
