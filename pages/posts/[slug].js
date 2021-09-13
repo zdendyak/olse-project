@@ -1,4 +1,5 @@
 import { createClient } from 'contentful'
+import Fallback from '../component/Fallback'
 import Post from '../component/Post'
 
 const client = createClient({
@@ -21,7 +22,7 @@ export const getStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false
+    fallback: true
   }
 }
 
@@ -30,6 +31,15 @@ export async function getStaticProps (context) {
     content_type: 'post',
     'fields.slug': context.params.slug
   })
+
+  if (items.length === 0) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false
+      }
+    }
+  }
 
   return {
     props: {
@@ -40,7 +50,8 @@ export async function getStaticProps (context) {
 }
 
 export default function PostDetails({ post }) {
-  
+  if (!post) return <Fallback />
+
   return (
     <Post post={post} />
   )

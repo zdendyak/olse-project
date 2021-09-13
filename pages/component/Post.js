@@ -27,15 +27,17 @@ export default function Post({ post }) {
         <div className="post-content">{documentToReactComponents(content)}</div>
       </div>
       <footer className="post-meta">
-        { Array.isArray(tags) ? tags.map(tag => (
-          <span key={tag}>{tag}</span>
-        )) : null }
+        <div className="post-tags">
+          { Array.isArray(tags) ? tags.map(tag => (
+            <span key={tag} className="post-tag">{tag}</span>
+          )) : null }
+        </div>
       </footer>
 
       <style jsx>{`
         .post {
           border-top: 1px solid #ccc;
-          padding: 0 0 59px;
+          padding: 0 0 50px;
         }
         .post:first-child {
           border-top: none;
@@ -49,7 +51,7 @@ export default function Post({ post }) {
           letter-spacing: 1px;
           line-height: 1em;
           margin: 0 0 2px;
-          padding: 55px 0 0;
+          padding: 25px 0 0;
           text-transform: uppercase;
           clear: both;
           color: #777;
@@ -67,6 +69,15 @@ export default function Post({ post }) {
         .post-body {
           padding: 0 30px 0 44px;
           width: 474px;
+        }
+        .post-tags {
+          padding: 0 30px 0 44px;
+        }
+        .post-tag {
+          background: rgba(0, 0, 0, 0.1);
+          margin: 0 2px;
+          padding: 2px 4px;
+
         }
       `}</style>
     </article>
