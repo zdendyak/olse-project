@@ -50,7 +50,7 @@ export async function getStaticProps (context) {
       post,
       items
     },
-    revalidate: 24 * 60 * 60
+    revalidate: 60
   }
 
 }
